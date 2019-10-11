@@ -22,3 +22,10 @@ export const addSmurf = (smurf) => dispatch => {
             dispatch(getSmurfs(response.data));
         })
 }
+
+export const deleteSmurf = (id) => dispatch => {
+    axios.delete(`http://localhost:3333/smurfs/${id}`)
+        .then(response => {
+            dispatch(getSmurfs(response.data));
+        })
+}
