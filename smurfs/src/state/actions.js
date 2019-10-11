@@ -14,6 +14,7 @@ export const fetchSmurfs = () => dispatch => {
         .then(response => {
             dispatch(getSmurfs(response.data));
         })
+        .catch(error => console.log(error))
 }
 
 export const addSmurf = (smurf) => dispatch => {
@@ -21,6 +22,7 @@ export const addSmurf = (smurf) => dispatch => {
         .then(response => {
             dispatch(getSmurfs(response.data));
         })
+        .catch(error => console.log(error))
 }
 
 export const deleteSmurf = (id) => dispatch => {
@@ -28,4 +30,5 @@ export const deleteSmurf = (id) => dispatch => {
         .then(response => {
             dispatch(getSmurfs(response.data));
         })
+        .catch(error => console.log(error))
 }
