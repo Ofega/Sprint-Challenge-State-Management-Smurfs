@@ -2,33 +2,35 @@ import * as types from "./types";
 import axios from 'axios';
 
 
-export const getSmurfs = (smurfs) => {
+axios.defaults.baseURL = 'http://localhost:3333';
+
+const action = (type, payload) => {
     return {
-        type: types.GET_SMURFS,
-        payload: smurfs
+        type,
+        payload
     }
 }
 
 export const fetchSmurfs = () => dispatch => {
-    axios.get('http://localhost:3333/smurfs')
+    axios.get('/smurfs')
         .then(response => {
-            dispatch(getSmurfs(response.data));
+            dispatch(action(types.FETCH_SMURFS, response.data));
         })
         .catch(error => console.log(error))
 }
 
 export const addSmurf = (smurf) => dispatch => {
-    axios.post('http://localhost:3333/smurfs', smurf)
+    axios.post('/smurfs', smurf)
         .then(response => {
-            dispatch(getSmurfs(response.data));
+            dispatch(action(types.ADD_SMURF, response.data));
         })
         .catch(error => console.log(error))
 }
 
 export const deleteSmurf = (id) => dispatch => {
-    axios.delete(`http://localhost:3333/smurfs/${id}`)
+    axios.delete(`/smurfs/${id}`)
         .then(response => {
-            dispatch(getSmurfs(response.data));
+            dispatch(action(types.DELETE_SMURF, response.data));
         })
         .catch(error => console.log(error))
 }
