@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { combineReducers, createStore, compose, applyMiddleware } from 'redux';
 import * as reducers from './state/reducers';
 import Smurfs from "./components/Smurfs";
+import NewSmurfForm from "./components/NewSmurfForm";
 
 const rootReducer = combineReducers({
   smurfs: reducers.smurfsReducer,
@@ -22,6 +23,7 @@ const App = () => {
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         <div>Welcome to your state management version of Smurfs!</div>
+        <NewSmurfForm />
         <Smurfs />
       </div>
     </Provider>

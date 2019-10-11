@@ -15,3 +15,10 @@ export const fetchSmurfs = () => dispatch => {
             dispatch(getSmurfs(response.data));
         })
 }
+
+export const addSmurf = (smurf) => dispatch => {
+    axios.post('http://localhost:3333/smurfs', smurf)
+        .then(response => {
+            dispatch(getSmurfs(response.data));
+        })
+}
