@@ -23,7 +23,12 @@ const NewSmurfForm = ({ addSmurf }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addSmurf(inputValues);
+        addSmurf({
+            name: inputValues.name,
+            age: Number(inputValues.age),
+            height: inputValues.height + 'cm',
+            id: inputValues.id
+        });
         setInputValues(initialFormValue);
     }
 
