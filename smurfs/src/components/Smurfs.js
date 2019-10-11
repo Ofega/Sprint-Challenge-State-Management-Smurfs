@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../state/actions';
 
-const Smurfs = ({ smurfs }) => {
+const Smurfs = ({ smurfs, fetchSmurfs }) => {
+    
+    useEffect(() => {
+        fetchSmurfs();
+    }, [])
+
     return (
         <ul>
             {
                 smurfs.map(item => {
                     return (
-                        <li key={item.id}>{item.name}</li>
+                        <li key={item.id}>
+                            <p>Name: {item.name}</p>
+                            <p>Age: {item.age}</p>
+                            <p>Height: {item.height}</p>
+                        </li>
                     )
                 })
             }
@@ -15,4 +25,4 @@ const Smurfs = ({ smurfs }) => {
     )
 }
 
-export default connect(state => state)(Smurfs);
+export default connect(state => state, actions)(Smurfs);
